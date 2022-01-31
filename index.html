@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" href="icon.png" />
+
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="style.css" />
+    <title>Guess My Number!</title>
+  </head>
+  <body>
+    <div class="app">
+      <header>
+        <h1>Guess My Number!</h1>
+        <p class="between">Between 1 and 20</p>
+        <button class="btn again">Again!</button>
+        <div class="result"></div>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="192"
+          class="number"
+          height="192"
+          fill="#292524"
+          viewBox="0 0 256 256"
+        >
+          <rect width="256" height="256" fill="none"></rect>
+          <circle cx="128.00244" cy="128" r="96" opacity="0.2"></circle>
+          <circle
+            cx="128.00244"
+            cy="128"
+            r="96"
+            fill="none"
+            stroke="#292524"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></circle>
+          <circle cx="128.00244" cy="180" r="12"></circle>
+          <path
+            d="M128.00194,144.0045v-8a28,28,0,1,0-28-28"
+            fill="none"
+            stroke="#292524"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="16"
+          ></path>
+        </svg>
+      </header>
+      <main>
+        <section class="left">
+          <form action="" class="click-me">
+            <input type="number" class="guess" />
+            <button class="btn check">Check!</button>
+          </form>
+        </section>
+        <section class="right">
+          <p class="message">Guess Now...</p>
+          <div class="score-section">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="192"
+              height="192"
+              fill="#E4E4E7"
+              viewBox="0 0 256 256"
+              class="icon icon-1"
+            >
+              <rect width="256" height="256" fill="none"></rect>
+              <path
+                d="M45.12859,196.01674a8.01266,8.01266,0,0,0,9.97356,5.86223,273.90053,273.90053,0,0,1,145.746-.0138,8.01268,8.01268,0,0,0,9.97132-5.85941l25.48872-108.3169a8,8,0,0,0-11.03641-9.143L174.688,101.02754a8,8,0,0,1-10.24237-3.42535l-29.4524-53.01433a8,8,0,0,0-13.98652,0L91.55434,97.60219A8,8,0,0,1,81.312,101.02754L30.72054,78.54246a8,8,0,0,0-11.03717,9.13973Z"
+                opacity="0.2"
+              ></path>
+              <path
+                d="M45.12859,196.01674a8.01266,8.01266,0,0,0,9.97356,5.86223,273.90053,273.90053,0,0,1,145.746-.0138,8.01268,8.01268,0,0,0,9.97132-5.85941l25.48872-108.3169a8,8,0,0,0-11.03641-9.143L174.688,101.02754a8,8,0,0,1-10.24237-3.42535l-29.4524-53.01433a8,8,0,0,0-13.98652,0L91.55434,97.60219A8,8,0,0,1,81.312,101.02754L30.72054,78.54246a8,8,0,0,0-11.03717,9.13973Z"
+                fill="none"
+                stroke="#292524"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></path>
+              <path
+                d="M95.99993,161.6787a305.83767,305.83767,0,0,1,64.00009,0"
+                fill="none"
+                stroke="#292524"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></path>
+            </svg>
+            <p class="label-score">Score: <span class="score">20</span></p>
+          </div>
+
+          <div class="high-score-section">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="192"
+              height="192"
+              fill="#E4E4E7"
+              viewBox="0 0 256 256"
+              class="icon icon-2"
+            >
+              <rect width="256" height="256" fill="none"></rect>
+              <circle cx="127.99414" cy="96" r="48" opacity="0.2"></circle>
+              <circle
+                cx="127.99414"
+                cy="96"
+                r="80"
+                fill="none"
+                stroke="#292524"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></circle>
+              <circle
+                cx="127.99414"
+                cy="96"
+                r="48"
+                fill="none"
+                stroke="#292524"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></circle>
+              <polyline
+                points="176 159.995 176 240 127.993 216 80 240 80 160.002"
+                fill="none"
+                stroke="#292524"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="16"
+              ></polyline>
+            </svg>
+            <p class="label-highscore">
+              Highscore: <span class="highscore">0</span>
+            </p>
+          </div>
+        </section>
+      </main>
+    </div>
+    <footer>Designed © 2022 By Mustafa Johnny</footer>
+    <script src="script.js"></script>
+  </body>
+</html>
