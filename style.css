@@ -16,7 +16,7 @@ body {
     linear-gradient(#182f3b, transparent),
     linear-gradient(to top right, #b91c1c, transparent);
   background-blend-mode: screen;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   position: relative;
   display: flex;
   justify-content: center;
@@ -43,14 +43,12 @@ footer {
 }
 
 main {
-  /* height: 70vh; */
   color: #eee;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* LAYOUT */
 header {
   position: relative;
   height: 35vh;
@@ -76,7 +74,6 @@ header {
   bottom: 14.2rem;
 }
 
-/* ELEMENTS STYLE */
 h1 {
   color: #27272aef;
   font-size: 4.5rem;
@@ -193,6 +190,13 @@ h1 {
   left: 39.1rem;
 }
 
+.guess::placeholder {
+  color: #27272a70;
+  font-size: 19px;
+  padding-left: 12px;
+  font-family: "Josefin Sans", sans-serif !important;
+}
+
 .btn {
   border: none;
   cursor: pointer;
@@ -201,7 +205,7 @@ h1 {
   font-size: 2.2rem;
   padding: 1.5rem 2.5rem;
   border-radius: 10px;
-  font-family: 'Josefin Sans', sans-serif;
+  font-family: "Josefin Sans", sans-serif;
   transition: all 0.4s !important;
   box-shadow: 0 1px 2px rgb(0 0 0 / 10%);
 }

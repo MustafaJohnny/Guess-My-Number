@@ -1,75 +1,111 @@
-'use strict';
+"use strict";
 
+// Selecting all our project elements so we can manipulate the DOM and change the UI.
+const messageEl = document.querySelector(".message");
+const guessEl = document.querySelector(".guess");
+const scoreEl = document.querySelector(".score");
+const numberEl = document.querySelector(".number");
+const resultEl = document.querySelector(".result");
+const highscoreEl = document.querySelector(".highscore");
+const clickButton = document.querySelector(".click-me");
+const againButton = document.querySelector(".again");
+
+// Setting our secret number between 1-20, our main score that we start with and also the high score that will be increased later.
 let secretNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 let highscore = 0;
 
+// Very simple function to display a message in the game when the player dose something.
 const displayMessage = function (message) {
-  document.querySelector('.message').textContent = message;
+  messageEl.textContent = message;
 };
 
-document.querySelector('.click-me').addEventListener('submit', function (e) {
+// Our main function call when the player enters a number and starts guessing.
+clickButton.addEventListener("submit", function (e) {
   e.preventDefault();
-  const guess = Number(document.querySelector('.guess').value);
-  console.log(guess, typeof guess);
 
+  // Getting the entered value by the player.
+  const guess = Number(guessEl.value);
+
+  // When the player does not enter anything and clicks on the button, we do some DOM changes and show a new message.
   if (!guess) {
-    document.querySelector('.message').style.borderRadius = '6px';
-    document.querySelector('.message').style.backgroundColor = '#13121185';
-    document.querySelector('.message').style.color = '#f5f5f4';
-    displayMessage('No Number!!');
+    messageEl.style.borderRadius = "6px";
+    messageEl.style.backgroundColor = "#13121185";
+    messageEl.style.color = "#f5f5f4";
+    displayMessage("No Number!!");
 
-    // When player wins
+    // When the player wins and guesses the secret number.
   } else if (guess === secretNumber) {
-    document.querySelector('.message').style.removeProperty('color');
-    document.querySelector('.message').style.backgroundColor = '#3efd0467';
-    document.querySelector('.message').style.borderRadius = '5px';
-    document.querySelector('.score').innerHTML = 0;
-    document.querySelector('.guess').value = '';
-    document.querySelector('.guess').blur();
-    displayMessage('You won!');
-    document.querySelector('.number').classList.add('hidden');
-    document.querySelector('.result').innerHTML = secretNumber;
+    // Some DOM changes.
+    messageEl.style.removeProperty("color");
+    messageEl.style.backgroundColor = "#3efd0467";
+    messageEl.style.borderRadius = "5px";
+    // We set the score and guess value to zero.
+    scoreEl.innerHTML = 0;
+    guessEl.value = "";
+    guessEl.blur();
+    // Display a new message.
+    displayMessage("You won!");
+    // Reveal the secret number.
+    numberEl.classList.add("hidden");
+    resultEl.innerHTML = secretNumber;
 
+    // The game will restart again after 5 seconds.
     setTimeout(() => {
       init();
     }, 5000);
 
+    // When the score that the player ended up with after he won the game is bigger than the high score.
     if (score > highscore) {
+      // The high score will be that score that we ended up with.
       highscore = score;
-      document.querySelector('.highscore').textContent = highscore;
+      // We update the UI with the new score value.
+      highscoreEl.textContent = highscore;
+      // Reset the score to zero so that we can play again.
       score = 0;
     }
 
-    // When guess is wrong
+    // When the player guesses wrong.
   } else if (guess !== secretNumber) {
     if (score > 1) {
+      // When the guess number is bigger than the secret number.
       if (guess > secretNumber) {
-        document.querySelector('.message').style.removeProperty('color');
-        document.querySelector('.message').style.backgroundColor = '#5f583140';
-        document.querySelector('.message').style.borderRadius = '100px';
-        document.querySelector('.message').style.borderTopRightRadius = '0';
-        document.querySelector('.message').style.borderBottomLeftRadius = '0';
-        displayMessage('Too high!');
+        // Some crazy DOM manipulation!
+        messageEl.style.removeProperty("color");
+        messageEl.style.backgroundColor = "#5f583140";
+        messageEl.style.borderRadius = "100px";
+        messageEl.style.borderTopRightRadius = "0";
+        messageEl.style.borderBottomLeftRadius = "0";
+        // Update the message.
+        displayMessage("Too high!");
+        // When the guess number is smaller than the secret number.
       } else {
-        document.querySelector('.message').style.removeProperty('color');
-        document.querySelector('.message').style.backgroundColor = '#5f583140';
-        document.querySelector('.message').style.borderRadius = '100px';
-        document.querySelector('.message').style.borderTopLeftRadius = '0';
-        document.querySelector('.message').style.borderBottomRightRadius = '0';
-        displayMessage('Too low!');
+        // Also crazy DOM manipulation!
+        messageEl.style.removeProperty("color");
+        messageEl.style.backgroundColor = "#5f583140";
+        messageEl.style.borderRadius = "100px";
+        messageEl.style.borderTopLeftRadius = "0";
+        messageEl.style.borderBottomRightRadius = "0";
+        // Update the message.
+        displayMessage("Too low!");
       }
+      // Either way, if bigger or smaller we decrease the score by one.
       score--;
-      document.querySelector('.score').textContent = score;
+      // Update the score on the UI.
+      scoreEl.textContent = score;
     } else {
-      document.querySelector('.message').style.removeProperty('color');
-      document.querySelector('.message').style.backgroundColor = '#fd0404b7';
-      document.querySelector('.message').style.borderRadius = '6px';
-      displayMessage('You Lost...');
-      document.querySelector('.score').textContent = 0;
-      document.querySelector('.guess').value = '';
-      document.querySelector('.guess').blur();
+      // When the player loses the game.
+      messageEl.style.removeProperty("color");
+      messageEl.style.backgroundColor = "#fd0404b7";
+      messageEl.style.borderRadius = "6px";
+      // Update the message.
+      displayMessage("You Lost...");
+      // Reset the score and guess value to zero.
+      scoreEl.textContent = 0;
+      guessEl.value = "";
+      guessEl.blur();
 
+      // The game will restart again after 5 seconds.
       setTimeout(() => {
         init();
       }, 5000);
@@ -77,21 +113,26 @@ document.querySelector('.click-me').addEventListener('submit', function (e) {
   }
 });
 
+// The initial function that we call when the player win, lose or restart the game.
 function init() {
+  // Generate the score and secret number.
   score = 20;
   secretNumber = Math.trunc(Math.random() * 20) + 1;
-  displayMessage('Guess Now...');
-  document.querySelector('.result').innerHTML = '';
-  document.querySelector('.number').classList.remove('hidden');
-  document.querySelector('.message').style.removeProperty('color');
-  document.querySelector('.message').style.borderRadius = '100px';
-  document.querySelector('.message').style.borderTopRightRadius = '4rem';
-  document.querySelector('.message').style.borderBottomLeftRadius = '4rem';
-  document.querySelector('.message').style.backgroundColor = '#5f583131';
-  document.querySelector('.score').textContent = score;
-  document.querySelector('.guess').value = '';
+  // Set the message.
+  displayMessage("Your Guess...");
+  // UI changes.
+  resultEl.innerHTML = "";
+  numberEl.classList.remove("hidden");
+  messageEl.style.removeProperty("color");
+  messageEl.style.borderRadius = "100px";
+  messageEl.style.borderTopRightRadius = "4rem";
+  messageEl.style.borderBottomLeftRadius = "4rem";
+  messageEl.style.backgroundColor = "#5f583131";
+  scoreEl.textContent = score;
+  guessEl.value = "";
 }
 
-document.querySelector('.again').addEventListener('click', function () {
+// Calling that initial function when the player clicks on the button again.
+againButton.addEventListener("click", function () {
   init();
 });
