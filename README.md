@@ -24,7 +24,6 @@ I also included a lot of cool transition effects and smooth hovering. Guess My N
 
 - Mastering absolute position
 - Creating smoothy and elegant UI transitions
-- A better understanding of functions hoisting in JS
 - Handling click and hover events
 - Aggressive DOM manipulations
 - More familiar with Flexbox 
