@@ -9,7 +9,7 @@ I also included a lot of cool transition effects and smooth hovering. Guess My N
 
 ## Links
 
-- Live Site URL:
+- Live Site URL: https://mustafajohnny.github.io/Guess-My-Number/
 
 
 ## Built with
