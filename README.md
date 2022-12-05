@@ -1,4 +1,4 @@
-# Guess My Number - Frontend Project
+# Guess My Number - Frontend Practical Project
 
 ## Overview
 This is the second project that I designed and wrote on my own, with this one I wanted to go with a very special and playful design, here 
